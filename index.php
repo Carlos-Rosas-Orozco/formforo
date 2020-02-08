@@ -72,7 +72,7 @@
 					<br>
 					<label>Subir documento solo en formato Word!!!!!!</label>
 						<input type="file" name="documento">
-					<label>Subir imagen de pago (jpg, png)!!!!!</label>
+					<label>Subir imagen de pago (jpg, png o pdf)!!!!!</label>
 						<input type="file" name="imagen">
 						<br>
 						<label>Texto</label>
