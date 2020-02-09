@@ -18,13 +18,13 @@ $taller = $_POST["taller_t"];
 $destino = "documentos/". $nombre .$_FILES["documento"]["name"];
 $destinoImagen = "imagen/".  $nombre .$_FILES["imagen"]["name"];
 $destinotxt = "archivotxt/". $nombre . ".txt";
+$numeroPalbaras = str_word_count($_POST['descripcion']);
 
 $bandera = 1; /* Esta bandera ayuda a realizar el insert en mysql despues de hacer todas las validaciones en los archivos, para que se cumpla 
-la condicion "bandera" tiene que ser igual a 3 */
+la condicion "bandera" tiene que ser igual a 4 */
 
 $bandera_archivos = 1; /* Esta bandera ayuda a guardar los archivos (word, imagen, txt) en las carpetas correspondientes despues de hacer todas 
-las validaciones, para que se cumpla la condicion "bandera" tiene que ser igual a 3 */
-
+las validaciones, para que se cumpla la condicion "bandera" tiene que ser igual a 4 */
 
 //Almacenar Documento de Word INICIA ------------------------------- WORD ---------------------------------
 
@@ -36,7 +36,7 @@ $mTipo = mime_content_type($archivo);
 $size = filesize($archivo);
 
 if (($mTipo == "application/msword") or ($mTipo == "application/vnd.openxmlformats-officedocument.wordprocessingml.document")){
-      if($size < 440000){ //Modificar el tamaño del archivo en Bytes 
+      if($size < 180000){ //Modificar el tamaño del archivo en Bytes 
             
             $bandera_archivos += 1; //primera bandera para almacenar archivos en carpeta = 2
             echo "Archivo correcto ";
@@ -66,7 +66,7 @@ $mTipo_imagen = mime_content_type($archivo_imagen);
 $size_imagen = filesize($archivo_imagen); 
 
 if (($mTipo_imagen == "image/jpeg") or ($mTipo_imagen == "application/pdf") or ($mTipo_imagen == "image/png")){
-      if($size_imagen < 150000){ //Modificar el tamaño de la imagen en Bytes
+      if($size_imagen < 180000){ //Modificar el tamaño de la imagen en Bytes
             
             $bandera_archivos += 1; //segunda bandera para almacenar archivos en carpeta = 3
             echo "Archivo correcto";
@@ -87,13 +87,25 @@ else{
 
 //Almacenar ARCHIVO TXT INICIA   ------------------------------- TXT --------------------------------------
 
-                                     /** FALTA VALIDAR LAS 300 PALABRAS  **/
+if($numeroPalbaras <= 2){ //Modificar el número de palabras 
+     
+      $bandera_archivos += 1; //tercera bandera para almacenar archivos en carpeta = 4
+      $bandera += 1; //tercera suma bandera = 4
+
+}
+else{
+      echo "El numero de palabras tiene que ser un maximo de 300";
+      echo "<br>";
+      echo $numeroPalbaras;
+      echo "<br>";
+}
+                                     
 
 //Almacenar ARCHIVO TXT TERMINA ------------------------------- TXT ---------------------------------------
 
 //Almacenar ARCHIVOS EN CARPETAS INICIA ------------------------------- CARPETAS --------------------------
 
-if($bandera_archivos == 3){
+if($bandera_archivos == 4){
       move_uploaded_file($archivo,$destino);
       move_uploaded_file($archivo_imagen,$destinoImagen);
       $ar = fopen("archivotxt/".$nombre.".txt","a") or die ("Error al crear");
@@ -112,7 +124,7 @@ else {
 
 //Insert en mysql si se cumplen todas las condiciones---------------------INSERT---------------------------
 
-if($bandera == 3){
+if($bandera == 4){
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 // Check connection

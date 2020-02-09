@@ -101,18 +101,7 @@ for (var i = 0; i < elementos.length; i++) {
 		elementos[i].addEventListener("blur", blurInput);
 	}
 }
-function validar(evt) {
-	//var exp = /^item\d+$/;
-	var textoArea = document.getElementsByName("descripcion").value;
-	textoAreaDividido = textoArea.split(" ");
-	numeroPalabras = textoAreaDividido.length;
-	alert(numeroPalabras);
-	if (numeroPalabras > 300) {
-	  alert("No valido, el escrito debe tener un maximo de 300 palabras.");
-	} else {
-	  alert("Valido");
-	}
-  }
+
 
 
 }())

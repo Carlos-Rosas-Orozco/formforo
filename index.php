@@ -78,7 +78,6 @@
 						<label>Texto</label>
 						<br>
 						<textarea name="descripcion" rows="10" cols="60" placeholder="Comparte tu opinión!"></textarea>
-						<button onclick="validar(event)">Enviar</button>
 					</div>
 			
 					<input type="submit" id="btn-submit" value="Enviar">
