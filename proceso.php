@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 date_default_timezone_set("America/Mexico_City");
 $servername = "localhost";
 //$username = "upncolim_asisten";
@@ -19,12 +20,16 @@ $destino = "documentos/". $nombre .$_FILES["documento"]["name"];
 $destinoImagen = "imagen/".  $nombre .$_FILES["imagen"]["name"];
 $destinotxt = "archivotxt/". $nombre . ".txt";
 $numeroPalbaras = str_word_count($_POST['descripcion']);
+echo "<style> h2 { color: #FF0000; } </style>";
+echo "<style> h3 { color: #137108; } </style>";
 
 $bandera = 1; /* Esta bandera ayuda a realizar el insert en mysql despues de hacer todas las validaciones en los archivos, para que se cumpla 
-la condicion "bandera" tiene que ser igual a 4 */
+la condicion "bandera" tiene que ser igual a 3 */
 
 $bandera_archivos = 1; /* Esta bandera ayuda a guardar los archivos (word, imagen, txt) en las carpetas correspondientes despues de hacer todas 
-las validaciones, para que se cumpla la condicion "bandera" tiene que ser igual a 4 */
+las validaciones, para que se cumpla la condicion "bandera" tiene que ser igual a 3 */
+
+$bandera_tamaño = 0;
 
 //Almacenar Documento de Word INICIA ------------------------------- WORD ---------------------------------
 
@@ -36,22 +41,30 @@ $mTipo = mime_content_type($archivo);
 $size = filesize($archivo);
 
 if (($mTipo == "application/msword") or ($mTipo == "application/vnd.openxmlformats-officedocument.wordprocessingml.document")){
-      if($size < 180000){ //Modificar el tamaño del archivo en Bytes 
+      if($size < 1000000){ //Modificar el tamaño del archivo en Bytes 
             
-            $bandera_archivos += 1; //primera bandera para almacenar archivos en carpeta = 2
-            echo "Archivo correcto ";
+            
+            //echo "Archivo correcto ";
             echo "<br>";
-            $bandera += 1; //primera suma bandera = 2
+            
       }
       else{
-            echo "El tamaño del archivo excede los 140000 Bytes, favor de reducir el tamaño. ";
+            $bandera_tamaño = 1;
+            echo "<br>";
+            echo "<center><H2>¡El tamaño del archivo excede los 1000000 Bytes, favor de reducir el tamaño. !</H2></center> ";
             echo "<br>"; 
+            
       }
 }
 else{
-      echo "Solo se admiten archivos de Word";
+      echo "<center><H1>¡Recuerda que tienes hasta el dia 29 de febrero para enviar tu ponencia en extenso en formato Word!</H1></center> ";
       echo "<br>";
+      echo "<center><H1>¡Enviar al correo inscripcionesalforo@upncolima.org.mx !</H1></center> ";
+      echo "<center><H1>¡Para cualquier aclaración no dude en llamar al teléfono 3125931731!</H1></center> ";
 }
+
+
+
 
 //Almacenar Documento de Word TERMINA ------------------------------- WORD --------------------------------
 
@@ -66,20 +79,20 @@ $mTipo_imagen = mime_content_type($archivo_imagen);
 $size_imagen = filesize($archivo_imagen); 
 
 if (($mTipo_imagen == "image/jpeg") or ($mTipo_imagen == "application/pdf") or ($mTipo_imagen == "image/png")){
-      if($size_imagen < 180000){ //Modificar el tamaño de la imagen en Bytes
+      if($size_imagen < 5000000){ //Modificar el tamaño de la imagen en Bytes
             
             $bandera_archivos += 1; //segunda bandera para almacenar archivos en carpeta = 3
-            echo "Archivo correcto";
+            //echo "Archivo correcto";
             echo "<br>";
             $bandera += 1; //segunda suma bandera = 3
       }
       else{
-            echo "El tamaño de la imagen excede los 150000 Bytes, favor de reducir el tamaño o cambiar el formato por pdf, png o jpg.";
+            echo "<center><H2>¡El tamaño de la imagen excede los 5000000 Bytes, favor de reducir el tamaño o cambiar el formato por pdf, png o jpg.!</H2></center> ";
             echo "<br>";  
       }      
 }
 else{
-      echo "Solo se admiten imagenes en formato pdf, png o jpg ";
+      echo "<center><H2>¡Solo se admiten imagenes en formato pdf, png o jpg !</H2></center> ";
       echo "<br>";
 }
 //Almacenar imagen TERMINA ------------------------------- IMAGEN -----------------------------------------
@@ -87,16 +100,16 @@ else{
 
 //Almacenar ARCHIVO TXT INICIA   ------------------------------- TXT --------------------------------------
 
-if($numeroPalbaras <= 2){ //Modificar el número de palabras 
+if($numeroPalbaras <= 300){ //Modificar el número de palabras 
      
       $bandera_archivos += 1; //tercera bandera para almacenar archivos en carpeta = 4
       $bandera += 1; //tercera suma bandera = 4
 
 }
 else{
-      echo "El numero de palabras tiene que ser un maximo de 300";
+      echo "<center><H2>¡El numero de palabras tiene que ser un maximo de 300 !</H2></center> ";
       echo "<br>";
-      echo $numeroPalbaras;
+      echo "<center><H2>¡Su resumen cuenta con ". $numeroPalbaras . " palabras  !</H2></center> ";
       echo "<br>";
 }
                                      
@@ -105,18 +118,19 @@ else{
 
 //Almacenar ARCHIVOS EN CARPETAS INICIA ------------------------------- CARPETAS --------------------------
 
-if($bandera_archivos == 4){
+if($bandera_archivos == 3){
+
       move_uploaded_file($archivo,$destino);
       move_uploaded_file($archivo_imagen,$destinoImagen);
       $ar = fopen("archivotxt/".$nombre.".txt","a") or die ("Error al crear");
       $des = $_REQUEST['descripcion'];
       fwrite($ar, $des);
-      echo "Se guardo el archivo";
+      //echo "Se guardo el archivo";
       echo "<br>";
       
 }
 else {
-      echo "Error al guardar ";
+     // echo "Error al guardar ";
       echo "<br>";
 }
 
@@ -124,7 +138,8 @@ else {
 
 //Insert en mysql si se cumplen todas las condiciones---------------------INSERT---------------------------
 
-if($bandera == 4){
+if($bandera == 3 ){
+
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 // Check connection
@@ -135,7 +150,7 @@ if (!$conn) {
 $sql = "INSERT INTO Asistencia (fecha,hora,nombre,perfil,institucion,ciudad,telefono,email,taller,destino,destino_imagen,destino_txt) VALUES ('$fecha','$hora','$nombre','$perfil','$institucion','$ciudad','$telefono','$email','$taller', '$destino', '$destinoImagen','$destinotxt')";
 
 if (mysqli_query($conn, $sql)) {
-      echo "<center><H1>¡Datos Guardados Correctamente!</H1></center>";
+      echo "<center><H3>¡Datos Guardados Correctamente!</H3></center>";
       
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -144,7 +159,8 @@ mysqli_close($conn);
 
 }
 else{
-      echo "<center><H1>¡Error al guardar revisar la informacion correctamente!</H1></center>";
+      echo "<center><H2>¡Error al guardar revisar la informacion correctamente!</H2></center>";
+      echo "<center><H2>¡Regresa al registro!</H2></center>";
 }
 
 

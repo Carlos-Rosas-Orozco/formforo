@@ -39,7 +39,7 @@ body {
         padding: 15px;
         background: none;
         border: none;
-        border-bottom: 2px solid #BBDEFB; }
+        border-bottom: 2px solid rgb(0, 0, 0); }
         .contenedor-formulario .formulario .input-group input[type="text"]:focus, .contenedor-formulario .formulario .input-group input[type="text"]:active,
         .contenedor-formulario .formulario .input-group input[type="email"]:focus,
         .contenedor-formulario .formulario .input-group input[type="email"]:active,
@@ -71,7 +71,7 @@ body {
             top: -12px;
             font-size: 12px;
             line-height: 12px;
-            color: #B6B6B6; }
+            color: rgb(0, 0, 0); }
       .contenedor-formulario .formulario .input-group.checkbox label, .contenedor-formulario .formulario .input-group.radio label {
         display: inline-block;
         cursor: pointer;
@@ -124,7 +124,7 @@ body {
       background: #0047bb;
       border-radius: 1px;
       border: 2px solid #f2f2f2;
-      color: #fff;
+      color: rgb(5, 5, 5);
       cursor: pointer;
       display: inline-block;
       font-family: "Roboto";
