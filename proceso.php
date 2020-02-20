@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 date_default_timezone_set("America/Mexico_City");
 $servername = "localhost";
 //$username = "upncolim_asisten";
@@ -162,6 +162,8 @@ else{
       echo "<center><H2>¡Error al guardar revisar la informacion correctamente!</H2></center>";
       echo "<center><H2>¡Regresa al registro!</H2></center>";
 }
+
+
 
 
 
