@@ -16,7 +16,7 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Ver todos los usuarios <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="consulta.php">Ver todos los usuarios <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="#">Usuarios validados</a>
@@ -35,25 +35,7 @@
        <h3>Consulta</h3>      
     </header>
         <?php
-            function consultaUsuarios(){
-                $user= "root";
-                $pass= "";
-                $server= "localhost";
-                $db= "formforo";
-                $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
-                if(!$conn){
-                    error_log("Error to connect to MySQL" . mysqli_error($conn));
-                    die('Internal server error');
-                }
-                global $consulta;
-                mysqli_select_db($conn, 'formforo');
-                $sql = 'select IdeAsistente, nombre, perfil, institucion, ciudad, telefono, email, taller, destino, destino_imagen, destino_txt from asistencia where valponencia is null';
-                $datos = mysqli_query($conn, $sql);
-                
-                
-                return $datos;
-                
-            }          
+            include "consultaLista.php";
             $consulta = consultaUsuarios();
         ?>
         
