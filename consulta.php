@@ -2,7 +2,7 @@
 <html lang="es">  
   <head>    
     <title>consulta</title>    
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
     <meta name="title" content="consulta">
     <meta name="description" content="Descripción de la WEB">    
     <link rel="stylesheet" type="text/css" href="css/stconsulta.css">

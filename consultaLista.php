@@ -1,7 +1,7 @@
 <?php
 function consultaUsuarios(){
     $user= "root";
-    $pass= "";
+    $pass= "colima";
     $server= "localhost";
     $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
@@ -20,7 +20,7 @@ function consultaUsuarios(){
 }   
 
 $user= "root";
-$pass= "";
+$pass= "colima";
 $server= "localhost";            
 $con= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
 if(!$con){
