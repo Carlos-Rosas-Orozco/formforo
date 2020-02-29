@@ -15,7 +15,167 @@
         <?php
             include "consultaLista.php";
             $consulta = consultaUsuarios();
+            $taller = taller();
+            $taller2 = taller2();
+            $taller3 = taller3();
+            $taller4 = taller4();
+            $taller5 = taller5();
+            $taller6 = taller6();
+            $taller7 = taller7();
+            $taller8 = taller8();
         ?>
+
+          <table class="table table-sm table-dark">
+            <thead>
+              <tr>
+              <th width= "100"> Las claves de la Nueva Escuela Mexicana </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
+
+          <table class="table table-sm">
+            <thead>
+              <tr>
+              <th width= "100"> Más allá de las palabras: equidad e inclusión como práctica </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller2)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
+
+          <table class="table table-sm table-dark">
+            <thead>
+              <tr>
+              <th width= "100"> Evaluación como proceso hacia la excelencia educativa </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller3)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
+
+          <table class="table table-sm">
+            <thead>
+              <tr>
+              <th width= "100"> Educación Emocional </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller4)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
+
+          <table class="table table-sm table-dark">
+            <thead>
+              <tr>
+              <th width= "100"> Tips para redactar tesis </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller5)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
+
+          <table class="table table-sm">
+            <thead>
+              <tr>
+              <th width= "100"> Elaboración de estrategias para intervención educativa </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller6)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
+
+          <table class="table table-sm table-dark">
+            <thead>
+              <tr>
+              <th width= "100"> Funcionamiento cognitivo e implementación de estrategias de enseñanza aprendizaje </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller7)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
+
+          <table class="table table-sm">
+            <thead>
+              <tr>
+              <th width= "100"> La creatividad, un espacio innovador para el aprendizaje </th>
+              </tr>
+            </thead>
+              <tbody>
+              <?php
+                while($fila = mysqli_fetch_array($taller8)){
+                    ?>
+                        <tr>
+                        <td align="center"><?php echo $fila['count(taller)'];  ?></td>
+                        </tr>
+                    <?php                
+                }
+                ?>
+              </tbody>
+          </table>
         
         <div>
             <div class="row">
@@ -61,7 +221,7 @@
                                      <input type="hidden" name="IdeAsistente[]" value="<?php echo $fila['IdeAsistente'] ?> "> 
                                      <input type="text" name="comentario" value="<?php echo $fila['nombre'] ?> "> 
                                      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="actualizar" value="Guardar">
-        
+                                   
                                 </form>
                             </div> 
                         </td>
