@@ -11,10 +11,10 @@ function consultaUsuarios(){
     }
     global $consulta;
     mysqli_select_db($conn, 'formforo');
-    $sql = 'select IdeAsistente, nombre, perfil, institucion, ciudad, telefono, email, taller, destino, destino_imagen, destino_txt from asistencia';
+    $sql = 'select IdeAsistente, nombre, perfil, institucion, ciudad, telefono, email, taller, destino, destino_imagen, destino_txt, valponencia from asistencia';
     $datos = mysqli_query($conn, $sql);
                 
-                
+               
     return $datos;
                 
 }   
@@ -31,7 +31,8 @@ mysqli_select_db($con, 'formforo');
 
     if(@$_POST["actualizar"]){
         foreach($_POST['IdeAsistente'] as $id){
-            $sql = 'UPDATE asistencia SET valponencia = "pagado" WHERE IdeAsistente = "'.$id.'"';
+            $comentario = $_POST["comentario"];
+            $sql = 'UPDATE asistencia SET valponencia = "'.$comentario.'" WHERE IdeAsistente = "'.$id.'"';
             $datos = mysqli_query($con, $sql);
         }
     }
