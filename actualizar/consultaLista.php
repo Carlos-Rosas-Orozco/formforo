@@ -1,21 +1,17 @@
 <?php
 
 function taller(){
-    //$user= "root";
-    //$pass= "colima";
-    //$server= "localhost";
-    //$db= "forocompleta";
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
+    mysqli_select_db($conn, 'formforo');
     $sql = 'select count(taller) from asistencia where taller = "Las claves de la Nueva Escuela Mexicana"';
     $datos = mysqli_query($conn, $sql);
                 
@@ -28,14 +24,14 @@ function taller2(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta'); 
+    mysqli_select_db($conn, 'formforo');
     $sql = 'select count(taller) from asistencia where taller = "Más allá de las palabras: equidad e inclusión como práctica"';
     $datos = mysqli_query($conn, $sql);
                 
@@ -48,14 +44,14 @@ function taller3(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
+    mysqli_select_db($conn, 'formforo');
     $sql = 'select count(taller) from asistencia where taller = "Evaluación como proceso hacia la excelencia educativa"';
     $datos = mysqli_query($conn, $sql);
                 
@@ -68,14 +64,14 @@ function taller4(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
+    mysqli_select_db($conn, 'formforo');
     $sql = 'select count(taller) from asistencia where taller = "Educación Emocional"';
     $datos = mysqli_query($conn, $sql);
                 
@@ -88,14 +84,14 @@ function taller5(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
+    mysqli_select_db($conn, 'formforo');
     $sql = 'select count(taller) from asistencia where taller = "Tips para redactar tesis"';
     $datos = mysqli_query($conn, $sql);
                 
@@ -108,14 +104,14 @@ function taller6(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
+    mysqli_select_db($conn, 'formforo');
     $sql = 'select count(taller) from asistencia where taller = "Elaboración de estrategias para intervención educativa"';
     $datos = mysqli_query($conn, $sql);
                 
@@ -128,15 +124,15 @@ function taller7(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
-    $sql = 'select count(taller) from asistencia where taller = "Funcionamiento cognitivo e implementación de estrategias de enseñanza"';
+    mysqli_select_db($conn, 'formforo');
+    $sql = 'select count(taller) from asistencia where taller = "Funcionamiento cognitivo e implementación de estrategias de enseñanza aprendizaje"';
     $datos = mysqli_query($conn, $sql);
                 
                
@@ -148,14 +144,14 @@ function taller8(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
+    mysqli_select_db($conn, 'formforo');
     $sql = 'select count(taller) from asistencia where taller = "La creatividad, un espacio innovador para el aprendizaje"';
     $datos = mysqli_query($conn, $sql);
                 
@@ -168,15 +164,15 @@ function consultaUsuarios(){
     $user= "root";
     $pass= "colima";
     $server= "localhost";
-    $db= "forocompleta";
+    $db= "formforo";
     $conn= mysqli_connect($server,$user,$pass) or die ("Error al conectar"); 
     if(!$conn){
         error_log("Error to connect to MySQL" . mysqli_error($conn));
         die('Internal server error');
     }
     global $consulta;
-    mysqli_select_db($conn, 'forocompleta');
-    $sql = 'select IdeAsistente, valponencia, nombre, perfil, telefono, email, destino_imagen, taller from asistencia';
+    mysqli_select_db($conn, 'formforo');
+    $sql = 'select IdeAsistente, nombre, perfil, institucion, ciudad, telefono, email, taller, destino, destino_imagen, destino_txt, valponencia from asistencia';
     $datos = mysqli_query($conn, $sql);
                 
                
@@ -192,7 +188,7 @@ if(!$con){
     error_log("Error to connect to MySQL" . mysqli_error($con));
     die('Internal server error');
 }
-mysqli_select_db($con, 'forocompleta');
+mysqli_select_db($con, 'formforo');
 
     if(@$_POST["actualizar"]){
         foreach($_POST['IdeAsistente'] as $id){

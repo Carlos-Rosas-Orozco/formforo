@@ -142,7 +142,7 @@
           <table class="table table-sm table-dark">
             <thead>
               <tr>
-              <th width= "100"> Funcionamiento cognitivo e implementación de estrategias de enseñanza aprendizaje </th>
+              <th width= "100"> Funcionamiento cognitivo e implementación de estrategias de enseñanza</th>
               </tr>
             </thead>
               <tbody>
@@ -183,18 +183,16 @@
         <table class="table table-hover">
             <thead>
                 <tr>
+                    <th width= "100"> Agregar comentario </th>
                     <th width= "100"> IdeAsistente </th>
+                    <th width= "100"> validar pago  </th>
                     <th width= "100"> nombre </th>
                     <th width= "100"> perfil </th>
-                    <th width= "100"> institucion </th>
-                    <th width= "100"> ciudad </th>
                     <th width= "100"> telefono </th>
                     <th width= "100"> email </th>
-                    <th width= "100"> taller </th>
-                    <th width= "100"> Descargar archivo </th>
                     <th width= "100"> ver imagen </th>
-                    <th width= "100"> ver archivo txt </th>
-                    <th width= "100"> validar pago  </th>
+                    <th width= "100"> taller </th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -202,29 +200,26 @@
                 while($fila = mysqli_fetch_array($consulta)){
                     ?>
                         <tr>
-                            <td><?php echo $fila['IdeAsistente'];  ?></td>
-                            <td><?php echo $fila['nombre'];  ?></td>
-                            <td><?php echo $fila['perfil'];  ?></td>
-                            <td><?php echo $fila['institucion'];  ?></td>
-                            <td><?php echo $fila['ciudad'];  ?></td>
-                            <td><?php echo $fila['telefono'];  ?></td>
-                            <td><?php echo $fila['email'];  ?></td>
-                            <td><?php echo $fila['taller'];  ?></td>
-                            <td><?php echo '<a href="' . $fila['destino'] . ' ">Descargar.</a>';  ?></td>
-                            <td><?php echo '<a href="' . $fila['destino_imagen'] . ' ">Ver.</a>';  ?></td>
-                            <td><?php echo '<a href="' . $fila['destino_txt'] . ' ">Archivo txt.</a>';  ?></td>
-                            <td><?php echo $fila['valponencia'];  ?></td>
                             <td>
                             <div>
-                                <form action="consulta.php" method="POST">
+                                <form action="consulta2.php" method="POST">
 
                                      <input type="hidden" name="IdeAsistente[]" value="<?php echo $fila['IdeAsistente'] ?> "> 
-                                     <input type="text" name="comentario" value="<?php echo $fila['nombre'] ?> "> 
+                                     <input type="text" name="comentario" value=" "> 
                                      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="actualizar" value="Guardar">
                                    
                                 </form>
                             </div> 
                         </td>
+                            <td><?php echo $fila['IdeAsistente'];  ?></td>
+                            <td><?php echo utf8_encode($fila['valponencia']);  ?></td>
+                            <td><?php echo utf8_encode($fila['nombre']);  ?></td>
+                            <td><?php echo utf8_encode($fila['perfil']);  ?></td>
+                            <td><?php echo $fila['telefono'];  ?></td>
+                            <td><?php echo $fila['email'];  ?></td>
+                            <td><?php echo '<a href="' . $fila['destino_imagen'] . ' ">Ver.</a>';  ?></td>
+                            <td><?php echo $fila['taller'];  ?></td>
+
                         </tr>
                     <?php                
                 }
